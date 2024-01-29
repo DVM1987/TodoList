@@ -5,6 +5,7 @@ export const SET_SEARCH_TERM = "SET_SEARCH_TERM";
 export const EDIT_TASK = "EDIT_TASK";
 export const START_EDITING_TASK = "START_EDITING_TASK";
 export const FINISH_EDITING_TASK = "FINISH_EDITING_TASK";
+export const DELETE_TASK = "DELETE_TASK"; // new action type
 
 export const setRawData = (data) => ({
   type: SET_RAW_DATA,
@@ -32,7 +33,13 @@ export const startEditingTask = (task) => ({
   payload: task,
 });
 
+
 export const finishEditingTask = (task) => ({
   type: FINISH_EDITING_TASK,
   payload: task,
+});
+
+export const deleteTask = (id) => ({ // new action creator
+  type: DELETE_TASK,
+  payload: id,
 });

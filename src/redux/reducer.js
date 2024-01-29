@@ -5,7 +5,9 @@ import {
   SET_SEARCH_TERM,
   EDIT_TASK,
   START_EDITING_TASK,
-  FINISH_EDITING_TASK,
+  FINISH_EDITING_TASK,  
+  DELETE_TASK, // new action type
+  
 } from "./actions";
 
 const initialState = {
@@ -54,7 +56,7 @@ export const rawDataReducer = (state = initialState, action) => {
         editingTask: action.payload,
         showTaskComponent: true,
       };
-
+  
     case FINISH_EDITING_TASK:
       return {
         ...state,
@@ -63,6 +65,12 @@ export const rawDataReducer = (state = initialState, action) => {
         ),
         editingTask: null,
         showTaskComponent: false,
+      };
+
+      case DELETE_TASK: // new case
+      return {
+        ...state,
+        rawData: state.rawData.filter((task) => task.id !== action.payload),
       };
 
     default:

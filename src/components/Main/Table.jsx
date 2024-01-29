@@ -1,6 +1,6 @@
-import React from "react";
+
 import { useDispatch, useSelector } from "react-redux";
-import { startEditingTask } from "../../redux/actions";
+import { startEditingTask, deleteTask } from "../../redux/actions";
 
 const Table = ({ data }) => {
   const dispatch = useDispatch();
@@ -47,7 +47,10 @@ const Table = ({ data }) => {
                   >
                     <i className="fas fa-edit" /> Sửa
                   </button>
-                  <button className="btn btn-danger btn-sm">
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => dispatch(deleteTask(item.id))} // dispatch deleteTask action on click
+                  >
                     <i className="fas fa-trash" /> Xóa
                   </button>
                 </td>
